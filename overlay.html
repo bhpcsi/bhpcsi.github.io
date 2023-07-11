@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styles for the overlay icon */
+    #overlay {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      line-height: 60px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      border-radius: 50%; /* Rounded shape */
+      overflow: hidden; /* Ensure image fits within the rounded shape */
+    }
+
+    /* CSS styles when the overlay is minimized */
+    #overlay.minimized {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* CSS styles for the content overlay */
+    #content {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease-in-out;
+      z-index: 9999;
+    }
+
+    /* CSS styles when the content overlay is active */
+    #content.active {
+      display: block;
+    }
+
+    /* CSS styles for the close button */
+    #close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay icon -->
+  <div id="overlay">
+    <img src="image/Artboard 54.png" alt="Overlay Icon" width="100%" height="100%">
+  </div>
+
+  <!-- Content overlay -->
+  <div id="content">
+    <!-- Close button -->
+    <div id="close">&times;</div>
+    <!-- Embedded content (iframe) -->
+    <iframe src="https://2446aebee360c6ebab.gradio.live/" width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+
+  <!-- JavaScript code for handling the overlay functionality -->
+  <script>
+    const overlay = document.getElementById('overlay');
+    const content = document.getElementById('content');
+    const close = document.getElementById('close');
+
+    overlay.addEventListener('click', function() {
+      content.classList.add('active');
+      overlay.classList.add('minimized');
+    });
+
+    close.addEventListener('click', function() {
+      content.classList.remove('active');
+      overlay.classList.remove('minimized');
+    });
+  </script>
+</body>
+</html>
