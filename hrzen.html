@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="refresh" content="0; URL=https://a42e9bdc32879fc9d6.gradio.live/">
-  <title>Redirecting...</title>
+    <title>Popup Gradio Chat</title>
+    <style>
+        /* Style for the popup container */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        /* Style for the popup content */
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style for the close button */
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <h1>Redirecting to ZenHR</h1>
-  <p>If you are not redirected, <a href="https://a42e9bdc32879fc9d6.gradio.live/">click here</a>.</p>
+    <!-- Clickable logo -->
+    <div id="openPopup" class="logo-button">
+        <img src="berca.png" alt="Logo" width="100" height="100">
+    </div>
+    <b>Klik logo di atas untuk membuka chatbot</b>
+    <!-- Popup container -->
+    <div id="popupContainer" class="popup-container">
+        <div class="popup-content">
+            <span class="popup-close" id="closePopup">&times;</span>
+            <iframe id="gradioFrame" src="about:blank" frameborder="0" width="800" height="400"></iframe>
+        </div>
+    </div>
+
+    <script>
+        var openButton = document.getElementById('openPopup');
+        var closeButton = document.getElementById('closePopup');
+        var popupContainer = document.getElementById('popupContainer');
+        var iframe = document.getElementById('gradioFrame');
+
+        // Open the popup when the button is clicked
+        openButton.addEventListener('click', function() {
+            popupContainer.style.display = 'block';
+            iframe.src = 'https://a42e9bdc32879fc9d6.gradio.live/';  // Replace with the actual link
+        });
+
+        // Close the popup when the close button is clicked
+        closeButton.addEventListener('click', function() {
+            popupContainer.style.display = 'none';
+            iframe.src = 'about:blank';
+        });
+    </script>
 </body>
 </html>
